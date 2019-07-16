@@ -1,6 +1,6 @@
 /**
  * @file user account connect DB init js
- * @author  JYkid
+ * @author JYkid <mriliujy@gmail.com>
  * @version 0.0.1
  */
 
