@@ -1,4 +1,4 @@
-# be-monitor
+# BE-Monitor
 
 ## Project setup
 ```
