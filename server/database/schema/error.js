@@ -9,23 +9,24 @@ const Schema = mongoose.Schema;
 const Mined = Schema.Types.Mixed;
 
 const errorSchema = new Schema({
-  errorId: {
-    Type: String,
-    required: true,
-  },
-  message: String,
-  detail: String,
-  fileName: String,
-  date: {
-    type: Date,
-    default: Date.now()
-  },
-  errorType: String,
-  ip: [String],
-  userAgent: String,
+  // message: String,
+  // detail: String,
+  // fileName: String,
+  // date: {
+  //   type: Date,
+  //   default: Date.now()
+  // },
+  // errorType: String,
+  // ip: [String],
+  // userAgent: String,
+  // url: String,
+  // line: Number,
+  // errorLine: Mined,
+  appName: String,
+  appVersion: String,
+  platform: String,
   url: String,
-  line: Number,
-  errorLine: Mined,
+  type: String,
   meta: {
     createAt: {
       type: Date,
@@ -42,9 +43,10 @@ errorSchema.pre("save", next => {
   if (this.isNew) {
     this.meta.createAt = this.meta.updateAt = Date.now();
   } else {
-    this.meta.updateAt = Date.now();
+    console.log(Date.now());
+    // this.meta.updateAt = Date.now();
   }
   next();
 });
 
-mongoose.model("Error", errorSchema);
+mongoose.model("Message", errorSchema);
