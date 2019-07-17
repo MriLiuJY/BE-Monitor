@@ -11,7 +11,7 @@ const Mined = Schema.Types.Mixed;
 const errorSchema = new Schema({
   errorId: {
     Type: String,
-    required: true,
+    // required: true,
   },
   message: String,
   detail: String,

@@ -6,8 +6,16 @@
 
 const mongoose = require("mongoose");
 const db = "mongodb://localhost/test";
+const glob = require("glob");
+const { resolve } = require("path");
 
 mongoose.Promise = global.Promise;
+
+exports.initSchemas = () => {
+  // require("./schema/user");
+  // glob.sync(resolve(__dirname, './schema', "../user.js")).forEach(require);
+  glob.sync(resolve(__dirname, './schema', "**/*.js")).forEach(require);
+};
 
 exports.connect = () => {
   let maxTryConnect = 0;

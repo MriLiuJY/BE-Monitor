@@ -8,13 +8,22 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require('express-session');
-const { connect } = require('./database/init');
+const mongoose = require("mongoose");
+const { connect, initSchemas } = require('./database/init');
 
 const app = express();
 app.use(express.static("./"));
 
 (async() => {
   await connect();
+
+  initSchemas();
+
+  const User = mongoose.model("User");
+
+  const users = await User.find({});
+
+  console.log(users);
 })();
 
 app.use(bodyParser.json());
