@@ -12,7 +12,7 @@
 
 ## 使用
 
-在前端前端项目中接入 SDK ，可以 [参考 FE-Monitor](https://github.com/MriLiuJY/FE-Monitor) 
+在前端前端项目中接入 SDK ，可以 [参考 FE-Monitor](https://github.com/MriLiuJY/monitorFE) 
 
 之后配置 config 中的 url 到该后台的服务器域名上即可。
 

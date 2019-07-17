@@ -8,14 +8,14 @@ const fs = require("fs");
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require('express-session');
-// const { connect } = require('./database/init');
+const { connect } = require('./database/init');
 
 const app = express();
 app.use(express.static("./"));
 
-// (async() => {
-//   await connect();
-// })();
+(async() => {
+  await connect();
+})();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
