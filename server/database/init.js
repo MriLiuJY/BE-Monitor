@@ -10,21 +10,45 @@ const db = "mongodb://localhost/test";
 mongoose.Promise = global.Promise;
 
 exports.connect = () => {
+  let maxTryConnect = 0;
   if (process.env.NODE_ENV !== 'production') {
     mongoose.set('debug', true);
   }
 
-  mongoose.connect(db);
-
-  mongoose.connection.on("disonnected", () => {
+  return new Promise((resolve, reject) => {
+    if (process.env.NODE_ENV !== 'production') {
+      mongoose.set('debug', true);
+    }
     mongoose.connect(db);
-  });
 
-  mongoose.connection.on("err", err => {
-    mongoose.connect(db);
-  });
+    mongoose.connection.on("disonnected", () => {
+      maxTryConnect++;
+      if (maxTryConnect < 5) {
+        mongoose.connect(db);
+      } else {
+        throw new Error("mongodb 迷路了");
+      }
+    });
 
-  mongoose.connection.on("open", () => {
-    console.log("Mongoodb connect done!");
+    mongoose.connection.on("err", err => {
+      maxTryConnect++;
+      if (maxTryConnect < 5) {
+        mongoose.connect(db);
+      } else {
+        throw new Error("mongodb 迷路了");
+      }
+    });
+
+    mongoose.connection.on("open", () => {
+      // const User = mongoose.model("user", { name: String });
+      // const user = new User({ name: "JYkid" });
+
+      // user.save().then(() => {
+      //   console.log("save success");
+      // })
+      
+      resolve();
+      console.log("Mongoodb connect done!");
   });
+  })
 };
