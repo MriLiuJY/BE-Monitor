@@ -6,7 +6,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Mined = Schema.Types.Mixed;
+const Mixed = Schema.Types.Mixed;
 const bcrypt = require("bcrypt");
 const SALT_WORK_FACTOR = 10;
 const MAX_LOGIN_TRY = 5;

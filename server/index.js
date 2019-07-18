@@ -13,18 +13,15 @@ const { connect, initSchemas } = require('./database/init');
 
 const app = express();
 app.use(express.static("./"));
+let Message;
 
 (async() => {
   await connect();
 
   initSchemas();
 
-  const User = mongoose.model("User");
-
-  const users = await User.find({});
-
-  console.log(users);
-})();
+  Message = mongoose.model("Message");
+})(Message);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
@@ -48,33 +45,22 @@ app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS,PATCH");
   next();
 });
-// app.all('*', (req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild');
-//   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS');
-//   if (req.method == 'OPTIONS') {
-//     res.send(200);
-//   } else {
-//     next();
-//   }
-// });
 
-
+/**
+ * 上报监控错误请求
+ * @emits error event monitor ajax request
+ */
 app.post("/error", (req, res) => {
-  const Message = mongoose.model("Message");
   let body = req.body;
   let data = {
     appName: body.appName,
     appVersion: body.appVersion,
     platform: body.platform,
     url: body.url,
-    type: body.detail.type,
+    type: body.detail.type || "",
   };
-  console.log(data);
-  console.log("--------------");
   let message = new Message(data);
   message.save();
-
   res.send(200);
 });
 
