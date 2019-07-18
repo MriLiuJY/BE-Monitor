@@ -6,7 +6,7 @@
 
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-const Mined = Schema.Types.Mixed;
+const Mixed = Schema.Types.Mixed;
 
 const categorySchema = new Schema({
   name: {
