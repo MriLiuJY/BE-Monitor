@@ -64,6 +64,13 @@ app.post("/error", (req, res) => {
   res.send(200);
 });
 
+app.use("/error/all", async (req, res) => {
+  const messgaes = await Message.find({}).sort({
+    'meta.createdAt': -1
+  });
+  res.send(messgaes);
+});
+
 
 const point = 4000;
 console.log("Your server listen at " + "http://localhost:" +point + "/index");
