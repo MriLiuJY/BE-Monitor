@@ -1,19 +1,16 @@
 <template>
-  <div class="home">
-  </div>
+  <!-- 报错详情 -->
+  <div class="detail"></div>
 </template>
 
 <script>
 export default {
-  name: 'home',
   data() {
     return {};
   },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
-.home {
-  border: 1px solid red;
-}
 </style>
