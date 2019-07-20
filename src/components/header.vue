@@ -1,7 +1,6 @@
 <template>
-  <!-- base -->
-  <div class="base">
-    <router-view></router-view>
+  <!-- header -->
+  <div class="header">
   </div>
 </template>
 
@@ -10,11 +9,8 @@ export default {
   data() {
     return {};
   },
-};
+}
 </script>
 
 <style scoped lang="scss">
-.base{
-  border: 1px solid red;
-}
 </style>
