@@ -12,6 +12,18 @@ export default new Router({
       path: '/',
       name: 'Base',
       component: Base,
+      children: [
+        {
+          path: '',
+          component: () => import('./views/home/home.vue'),
+          name: 'home',
+        },
+        {
+          path: 'detail',
+          component: () => import('./views/detail/detail.vue'),
+          name: 'detail',
+        },
+      ],
     },
   ],
 });

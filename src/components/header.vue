@@ -2,7 +2,7 @@
   <!-- header -->
   <div class="header">
     <a class="logo">
-      <img src="#" alt="fe-monitor" />
+      <img @click="changeRouter" alt="fe-monitor" />
     </a>
 
     <el-menu class="navigation" mode="horizontal">
@@ -29,6 +29,9 @@ export default {
   },
   methods: {
     exit() {},
+    changeRouter() {
+      this.$router.push('/');
+    },
   },
 };
 </script>
@@ -43,7 +46,7 @@ export default {
 
   .logo{
     margin-left: 30px;
-    border: 1px solid red;
+    cursor: pointer;
   }
 
   .navigation{
