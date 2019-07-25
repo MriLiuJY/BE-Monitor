@@ -49,6 +49,7 @@ app.all('*', function(req, res, next) {
 /**
  * 上报监控错误请求
  * @emits error event monitor ajax request
+ * @parma { request, response } 
  */
 app.post("/error", (req, res) => {
   let body = req.body;
