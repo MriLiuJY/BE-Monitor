@@ -5,16 +5,16 @@
       <img src="#" alt="fe-monitor" />
     </a>
 
-    <el-menu :default-active="activeIndex" class="navigation" mode="horizontal"
-      @select="handleSelect">
-      <el-menu-item index="3">
-        <a href="https://www.ele.me" target="_blank">{{username}}</a>
+    <el-menu class="navigation" mode="horizontal">
+      <el-menu-item index="1">
+        <a href="https://github.com/MriLiuJY/monitorFE" target="_blank">Github</a>
       </el-menu-item>
-      <el-submenu index="2">
+      <el-menu-item index="2">
+        <a href="http://monitor.ljy.design/" target="_blank">官方网站</a>
+      </el-menu-item>
+      <el-submenu index="3">
         <template slot="title">{{username}}</template>
-        <el-menu-item index="2-1">选项1</el-menu-item>
-        <el-menu-item index="2-2">选项2</el-menu-item>
-        <el-menu-item index="2-3">退出登陆</el-menu-item>
+        <el-menu-item @click="exit">退出登陆</el-menu-item>
       </el-submenu>
     </el-menu>
   </div>
@@ -26,6 +26,9 @@ export default {
     return {
       username: 'test',
     };
+  },
+  methods: {
+    exit() {},
   },
 };
 </script>
@@ -47,6 +50,10 @@ export default {
     position: absolute;
     right: 30px;
     top: 0;
+
+    a{
+      color: #333;
+    }
   }
 }
 </style>
