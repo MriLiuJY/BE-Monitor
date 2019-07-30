@@ -16,7 +16,7 @@ export default {
     return {};
   },
   mounted() {
-    this.line = this.$echarts.init(this.$refs.line);
+    this.chart = this.$echarts.init(this.$refs.line);
     window.addEventListener('resize', this.chart.resize);
   },
   methods: {},
@@ -24,4 +24,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.line{
+  min-height: 400px;
+  border: 1px solid red;
+}
 </style>
