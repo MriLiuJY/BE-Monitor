@@ -23,4 +23,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.base{
+  overflow: hidden;
+}
 </style>
