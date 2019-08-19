@@ -1,11 +1,13 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const Message = mongoose.model('Message');
 
-export default function getAllErrorList() {
+const getAllErrorList = function () {
   const messgaes = Message.find({}).sort({
     'meta.createdAt': -1,
   });
 
   return messgaes;
-}
+};
+
+module.exports = getAllErrorList;
