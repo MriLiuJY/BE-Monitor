@@ -2,10 +2,10 @@ import mongoose from 'mongoose';
 
 const Message = mongoose.model('Message');
 
-export default function getAllErrorList(res) {
+export default function getAllErrorList() {
   const messgaes = Message.find({}).sort({
     'meta.createdAt': -1,
   });
 
-  res.send(messgaes);
+  return messgaes;
 }
