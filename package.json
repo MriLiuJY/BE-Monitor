@@ -15,7 +15,7 @@
     "core-js": "^2.6.5",
     "echarts": "^4.2.1",
     "element-ui": "^2.10.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.16.2",
     "fe-monitor-sdk": "0.0.1",
     "glob": "^7.1.4",
